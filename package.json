@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ci:build": "npx pnpm i --store=node_modules/.pnpm-store && pnpm run build"
   },
   "dependencies": {
     "preact": "^10.16.0"
