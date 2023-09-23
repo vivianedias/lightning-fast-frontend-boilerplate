@@ -15,7 +15,7 @@ interface ResponseError extends Error {
   status?: number;
 }
 
-export async function fetcher(endpoint: string, options?: OptionsType) {
+export default async function fetcher(endpoint: string, options?: OptionsType) {
   const config: ConfigType = {
     body: options?.body ? JSON.stringify(options?.body) : null,
     method: options?.method || "GET",
@@ -33,10 +33,17 @@ export async function fetcher(endpoint: string, options?: OptionsType) {
     throw error;
   }
 
-  return res.json();
+  const contentType = res.headers.get("content-type");
+  const isResJson = contentType
+    ? contentType.indexOf("application/json") > -1
+    : true;
+
+  if (isResJson) return res.json();
+
+  return res.text();
 }
 
-export function getHeaders(customHeaders = {}) {
+function getHeaders(customHeaders = {}) {
   const headers = {
     "Content-Type": "application/json",
   };
