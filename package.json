@@ -13,7 +13,8 @@
   "dependencies": {
     "cross-fetch": "^4.0.0",
     "pino": "^8.15.1",
-    "preact": "^10.16.0"
+    "preact": "^10.16.0",
+    "swr": "^2.2.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230914.0",
