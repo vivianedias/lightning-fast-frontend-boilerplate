@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cross-fetch": "^4.0.0",
     "pino": "^8.15.1",
     "preact": "^10.16.0"
   },

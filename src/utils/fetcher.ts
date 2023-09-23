@@ -1,4 +1,5 @@
 import log from "./logger";
+import fetch from "cross-fetch";
 
 type OptionsType = {
   body?: Record<string, any>;
