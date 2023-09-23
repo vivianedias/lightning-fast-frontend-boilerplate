@@ -1,10 +1,12 @@
 import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
-import './app.css'
+import useSWR from "swr";
+import preactLogo from "./assets/preact.svg";
+import viteLogo from "/vite.svg";
+import "./app.css";
 
-export function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [count, setCount] = useState(0);
+  const { data, error, isLoading } = useSWR("/helloworld");
 
   return (
     <>
@@ -24,10 +26,13 @@ export function App() {
         <p>
           Edit <code>src/app.tsx</code> and save to test HMR
         </p>
+        {isLoading ? <p>loading...</p> : null}
+        {error ? <p>failed to load</p> : null}
+        {data ? <p>{data}</p> : null}
       </div>
       <p class="read-the-docs">
         Click on the Vite and Preact logos to learn more
       </p>
     </>
-  )
+  );
 }
